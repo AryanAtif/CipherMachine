@@ -3,8 +3,7 @@
 #include <stdbool.h>
 
 // Structure for the Caesar Cipher
-typedef struct 
-{
+typedef struct {
     char text[1000];
     char result[1000];
     int key;
@@ -20,7 +19,8 @@ typedef struct{
 // FUNCTIONS for the Caesar Cipher
 void csr_cipher();      
 void csr_encrypt();     
-void csr_decrypt();     
+void csr_decrypt();  
+void csr_break();   
 
 // FUNCTIONS for the Caesar Cipher
 void vig_cipher();     
@@ -38,7 +38,7 @@ int main(){
     printf("===========================================================");
 
     do{
-        printf("\n\nWhat encryption method do you want to do?\n1. Caesar Cipher \n2. Vigenere Cipher \n3. Exit \n(Press 1 for Caesar Cipher, 2 for Vigenere Cipher and 3 to exit the program. ): ");
+        printf("\n\nWhat encryption method do you want to do?\n1. Caesar Cipher \n2. Vigenere Cipher \n3. Exit \n(Press 1 for Caesar Cipher, 2 for Vigenere Cipher and 3 to exit the program): ");
         scanf(" %d", &choice);
         if(choice == 1){
             csr_cipher();
@@ -63,7 +63,7 @@ void csr_cipher(){
     
     int Enc_Dec;
     printf("\n-------------------------------------------------------------------------");
-    printf("\n\nDo you want to Encrypt or Decrypt the text? \n(1 = Encrypt, 2 = ecrypt): ");
+    printf("\n\nDo you want to Encrypt, Decrypt or break the text ? \n(1 = Encrypt, 2 = Derypt, 3 = Break): ");
     scanf(" %d", &Enc_Dec);
 
     while(getchar() != '\n');                                        // Clear the input buffer
@@ -74,6 +74,9 @@ void csr_cipher(){
     else if(Enc_Dec == 2){
         csr_decrypt();
     }
+    else if(Enc_Dec == 3){
+        csr_break();
+    }
     else{
         printf("\nError: Invalid option chosen!");
 
@@ -82,32 +85,29 @@ void csr_cipher(){
 void csr_encrypt(){    
         caesar s1;
         printf("\n-------------------------------------------------------------------------");
+        //Taking plaintext and the key as input
         printf("\nEnter the plaintext you want to encrypt: ");
         fgets(s1.text, 1000, stdin);
-
-        //<<| printf("The text you entered is: %s", s1.text);             // for debugging purposes
-    
         printf("\nEnter the key (as an integer): ");
         scanf("%d", &s1.key);
 
-        //<<| printf("The key entered is: %d", s1.key);                   // for debugging purposes
+        // Converting the Plaintext to Ciphertext 
         for(int i =0; s1.text[i] != '\0'; i++){
 
-            if(s1.text[i] >= 'a' && s1.text[i] <= 'z'){
+            if(s1.text[i] >= 'a' && s1.text[i] <= 'z'){                 //For lowercase characters
                 s1.result[i] =  (s1.text[i] - 'a' + s1.key) % 26 + 'a'; 
-                //<<| printf("\nThe encrypted char: %s", s1.result);      // for debugging purposes
             }
 
-            else if(s1.text[i] >= 'A' && s1.text[i] <= 'Z'){
+            else if(s1.text[i] >= 'A' && s1.text[i] <= 'Z'){            //For uppercase characters
                 s1.result[i] =  (s1.text[i] - 'A' + s1.key) % 26 + 'A'; 
-                //<<| printf("\nThe encrypted char: %s", s1.result);      // for debugging purposes
             }       
-            else{
+            else{                                                       //For non-alphabets
                 s1.result[i] =  s1.text[i];
             }     
         } 
-        s1.result[strlen(s1.text)] = '\0';
+        s1.result[strlen(s1.text)] = '\0';                             //Adds a Null terminator
 
+        // The Output message
         printf("\n-------------------------------\n");
         printf("The Encrypted Text:\n%s\n", s1.result);
         printf("-------------------------------\n");
@@ -116,31 +116,75 @@ void csr_encrypt(){
 void csr_decrypt(){
         caesar s1;
         printf("\n-------------------------------------------------------------------------");
+
         // Taking the ciphertext and the key from the user
         printf("\nEnter the ciphertext you want to decrypt: ");
         fgets(s1.text, 1000, stdin);
         printf("Enter the key (as an integer): ");
         scanf("%d", &s1.key);
 
-
-        for(int i =0; s1.text[i] != '\0'; i++){
-            // For lowercase characters
-            if(s1.text[i] >= 'a' && s1.text[i] <= 'z'){
+        // Converting the Ciphertext to Plaintext
+        for(int i =0; s1.text[i] != '\0'; i++){   
+            if(s1.text[i] >= 'a' && s1.text[i] <= 'z'){                         // For lowercase characters
                 s1.result[i] =  (s1.text[i] - 'a' - s1.key +26) % 26 + 'a'; 
             }
-            // For uppercase characters
-            else if(s1.text[i] >= 'A' && s1.text[i] <= 'Z'){
+            else if(s1.text[i] >= 'A' && s1.text[i] <= 'Z'){                    // For uppercase characters
                 s1.result[i] =  (s1.text[i] - 'A' - s1.key + 26) % 26 + 'A'; 
-            }
-            // For non-alphabets       
-            else{
+            }     
+            else{                                                               // For non-alphabets  
                 s1.result[i] =  s1.text[i];
             }
         } 
         s1.result[strlen(s1.text)] = '\0';
+
+        //The Output message
         printf("\n-------------------------------\n");
         printf("The Decrypted Text:\n%s\n", s1.result);
         printf("-------------------------------\n");
+}
+void csr_break(){
+
+        caesar s1;
+        s1.key = 0;
+        char Y_N;
+        printf("\n-------------------------------------------------------------------------");
+        //Taking Ciphertext as input
+        printf("\nEnter the plaintext you want to Decrypt: ");
+        fgets(s1.text, 1000, stdin);
+        
+        do{
+            for(int i =0; s1.text[i] != '\0'; i++){   
+                if(s1.text[i] >= 'a' && s1.text[i] <= 'z'){                         // For lowercase characters
+                    s1.result[i] =  (s1.text[i] - 'a' - s1.key +26) % 26 + 'a'; 
+                }
+                else if(s1.text[i] >= 'A' && s1.text[i] <= 'Z'){                    // For uppercase characters
+                    s1.result[i] =  (s1.text[i] - 'A' - s1.key + 26) % 26 + 'A'; 
+                }     
+                else{                                                               // For non-alphabets  
+                    s1.result[i] =  s1.text[i];
+                }
+            } 
+            s1.result[strlen(s1.text)] = '\0';
+
+            printf("\n-------------------------------\n");
+            printf("The Encrypted Text:\n%s\n", s1.result);
+            printf("-------------------------------\n");
+
+
+            printf("Do you want to run the another iteration? (Y/N): ");
+            scanf(" %c", &Y_N);
+            if(Y_N == 'Y'||Y_N == 'y'){
+                s1.key += 1;
+            }
+            else if(Y_N = 'N' || Y_N == 'n'){
+                break;
+            }
+            else {
+                printf("Invalid Option chosen. Exiting the loop.\n\n");
+                break;
+            }
+    }
+    while(s1.key < 26);
 }
 
 //========================= Vigenere Cipher Function =======
@@ -149,7 +193,7 @@ void vig_cipher(){
 
     int Enc_Dec;
     printf("\n-------------------------------------------------------------------------");
-    printf("\n\nDo you want to Encrypt or Decrypt the text? \n(1 = Encrypt, 2 = ecrypt): ");
+    printf("\n\nDo you want to Encrypt or Decrypt the text? \n(1 = Encrypt, 2 = Decrypt): ");
     scanf(" %d", &Enc_Dec);
 
     while(getchar() != '\n');                                        // To clear the input buffer
