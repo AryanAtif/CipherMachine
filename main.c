@@ -52,7 +52,7 @@ int main(){
     }
     while (choice != 3);
     
-    printf("Program exited sucessfully!");
+    printf("Program exited sucessfully");
 
     return 0;
 }
