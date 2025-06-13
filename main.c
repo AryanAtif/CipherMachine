@@ -28,6 +28,7 @@ void vig_decrypt();
 
 // Misc Functions
 void uppercase(char*, int);
+void output(char*);
 
 
 int main(){
@@ -110,6 +111,7 @@ void csr_encrypt(){
         printf("\n-------------------------------\n");
         printf("The Encrypted Text:\n%s\n", cipher.result);
         printf("-------------------------------\n");
+        output(cipher.result);
 
 }
 void csr_decrypt(){
@@ -140,6 +142,7 @@ void csr_decrypt(){
         printf("\n-------------------------------\n");
         printf("The Decrypted Text:\n%s\n", cipher.result);
         printf("-------------------------------\n");
+        output(cipher.result);
 }
 void csr_break(){
 
@@ -169,7 +172,7 @@ void csr_break(){
             printf("The Encrypted Text:\n%s\n", cipher.result);
             printf("-------------------------------\n");
             cipher.key += 1;
-    }
+        }
 }
 
 //========================= Vigenere Cipher Function =======
@@ -231,7 +234,7 @@ void vig_encrypt(){
     printf("\n-------------------------------\n");
     printf("The Encrypted Text:\n%s\n", cipher.result);
     printf("-------------------------------\n");
-
+    output(cipher.result);
 }
 void vig_decrypt(){
     vigenere cipher;
@@ -270,10 +273,23 @@ void vig_decrypt(){
     printf("\n-------------------------------\n");
     printf("The Decrypted Text:\n%s\n", cipher.result);
     printf("-------------------------------\n");
+    output(cipher.result);
 }
 
 void uppercase(char *a, int i){
     if(a[i] >= 'a' && a[i] <= 'z'){
         a[i] = a[i] - 'a' + 'A'; 
     }
+}
+
+void output(char *a){
+    FILE *fptr;
+    fptr = fopen("output.txt", "w");
+
+    fprintf(fptr, "===== THE OUTPUT RESULT =======\n");
+    fprintf(fptr, "%s\n", a);
+
+    printf("\nThe output has been written to the file \"output.txt\".");
+
+    fclose(fptr);
 }
