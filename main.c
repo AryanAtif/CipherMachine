@@ -63,7 +63,7 @@ void csr_cipher(){
     
     int Enc_Dec;
     printf("\n-------------------------------------------------------------------------");
-    printf("\n\nDo you want to Encrypt, Decrypt or break the text? \n(1 = Encrypt, 2 = Derypt, 3 = Break): ");
+    printf("\n\nDo you want to perform encryption, decryption or the brute force decryption? \n(1 = Encryption, 2 = Deryption, 3 = Brute-Force decryption): ");
     scanf(" %d", &Enc_Dec);
 
     while(getchar() != '\n');                                        // Clear the input buffer
@@ -180,7 +180,7 @@ void vig_cipher(){
 
     int Enc_Dec;
     printf("\n-------------------------------------------------------------------------");
-    printf("\n\nDo you want to Encrypt or Decrypt the text? \n(1 = Encrypt, 2 = Decrypt): ");
+    printf("\n\nDo you want to perform encryption or decryption? \n(1 = Encryption, 2 = Decryption): ");
     scanf(" %d", &Enc_Dec);
 
     while(getchar() != '\n');                                        // To clear the input buffer
