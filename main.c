@@ -38,7 +38,7 @@ int main(){
     printf("===========================================================");
 
     do{
-        printf("\n\nWhat encryption method do you want to do?\n1. Caesar Cipher \n2. Vigenere Cipher \n3. Exit \n(Press 1 for Caesar Cipher, 2 for Vigenere Cipher and 3 to exit the program): ");
+        printf("\n\nWhat encryption method do you want to use?\n1. Caesar Cipher \n2. Vigenere Cipher \n3. Exit \n(Press 1 for Caesar Cipher, 2 for Vigenere Cipher and 3 to exit the program): ");
         scanf(" %d", &choice);
         if(choice == 1){
             csr_cipher();
@@ -79,7 +79,6 @@ void csr_cipher(){
     }
     else{
         printf("\nError: Invalid option chosen!");
-
     }
 }
 void csr_encrypt(){    
