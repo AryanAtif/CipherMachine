@@ -108,7 +108,7 @@ void csr_encrypt(){
 
         // The Output message
         printf("\n-------------------------------\n");
-        printf("The Encrypted Text:\n%s\n", cipher.result);
+        printf("The Encrypted Text:\n%s", cipher.result);
         printf("-------------------------------\n");
         output(cipher.result);
 
@@ -139,7 +139,7 @@ void csr_decrypt(){
 
         //The Output message
         printf("\n-------------------------------\n");
-        printf("The Decrypted Text:\n%s\n", cipher.result);
+        printf("The Decrypted Text:\n%s", cipher.result);
         printf("-------------------------------\n");
         output(cipher.result);
 }
@@ -168,7 +168,7 @@ void csr_break(){
             cipher.result[strlen(cipher.text)] = '\0';
 
             printf("\n-------------------------------\n");
-            printf("The Encrypted Text:\n%s\n", cipher.result);
+            printf("The Encrypted Text:\n%s", cipher.result);
             printf("-------------------------------\n");
             cipher.key += 1;
         }
@@ -231,7 +231,7 @@ void vig_encrypt(){
     }
     cipher.result[strlen(cipher.text)] = '\0';
     printf("\n-------------------------------\n");
-    printf("The Encrypted Text:\n%s\n", cipher.result);
+    printf("The Encrypted Text:\n%s", cipher.result);
     printf("-------------------------------\n");
     output(cipher.result);
 }
@@ -270,7 +270,7 @@ void vig_decrypt(){
     }
     cipher.result[strlen(cipher.text)] = '\0';
     printf("\n-------------------------------\n");
-    printf("The Decrypted Text:\n%s\n", cipher.result);
+    printf("The Decrypted Text:\n%s", cipher.result);
     printf("-------------------------------\n");
     output(cipher.result);
 }
