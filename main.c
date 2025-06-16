@@ -63,7 +63,7 @@ void csr_cipher(){
     
     int Enc_Dec;
     printf("\n-------------------------------------------------------------------------");
-    printf("\n\nDo you want to Encrypt, Decrypt or break the text ? \n(1 = Encrypt, 2 = Derypt, 3 = Break): ");
+    printf("\n\nDo you want to Encrypt, Decrypt or break the text? \n(1 = Encrypt, 2 = Derypt, 3 = Break): ");
     scanf(" %d", &Enc_Dec);
 
     while(getchar() != '\n');                                        // Clear the input buffer
