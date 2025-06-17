@@ -1,3 +1,0 @@
-===== THE OUTPUT RESULT =======
-Hello world
-

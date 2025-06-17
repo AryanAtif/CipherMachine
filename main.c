@@ -63,7 +63,7 @@ void csr_cipher(){
     
     int Enc_Dec;
     printf("\n-------------------------------------------------------------------------");
-    printf("\n\nDo you want to Encrypt, Decrypt or break the text ? \n(1 = Encrypt, 2 = Derypt, 3 = Break): ");
+    printf("\n\nDo you want to perform encryption, decryption or the brute force decryption? \n(1 = Encryption, 2 = Deryption, 3 = Brute-Force decryption): ");
     scanf(" %d", &Enc_Dec);
 
     while(getchar() != '\n');                                        // Clear the input buffer
@@ -108,7 +108,7 @@ void csr_encrypt(){
 
         // The Output message
         printf("\n-------------------------------\n");
-        printf("The Encrypted Text:\n%s\n", cipher.result);
+        printf("The Encrypted Text:\n%s", cipher.result);
         printf("-------------------------------\n");
         output(cipher.result);
 
@@ -139,7 +139,7 @@ void csr_decrypt(){
 
         //The Output message
         printf("\n-------------------------------\n");
-        printf("The Decrypted Text:\n%s\n", cipher.result);
+        printf("The Decrypted Text:\n%s", cipher.result);
         printf("-------------------------------\n");
         output(cipher.result);
 }
@@ -168,7 +168,7 @@ void csr_break(){
             cipher.result[strlen(cipher.text)] = '\0';
 
             printf("\n-------------------------------\n");
-            printf("The Encrypted Text:\n%s\n", cipher.result);
+            printf("The Encrypted Text:\n%s", cipher.result);
             printf("-------------------------------\n");
             cipher.key += 1;
         }
@@ -180,7 +180,7 @@ void vig_cipher(){
 
     int Enc_Dec;
     printf("\n-------------------------------------------------------------------------");
-    printf("\n\nDo you want to Encrypt or Decrypt the text? \n(1 = Encrypt, 2 = Decrypt): ");
+    printf("\n\nDo you want to perform encryption or decryption? \n(1 = Encryption, 2 = Decryption): ");
     scanf(" %d", &Enc_Dec);
 
     while(getchar() != '\n');                                        // To clear the input buffer
@@ -231,7 +231,7 @@ void vig_encrypt(){
     }
     cipher.result[strlen(cipher.text)] = '\0';
     printf("\n-------------------------------\n");
-    printf("The Encrypted Text:\n%s\n", cipher.result);
+    printf("The Encrypted Text:\n%s", cipher.result);
     printf("-------------------------------\n");
     output(cipher.result);
 }
@@ -270,7 +270,7 @@ void vig_decrypt(){
     }
     cipher.result[strlen(cipher.text)] = '\0';
     printf("\n-------------------------------\n");
-    printf("The Decrypted Text:\n%s\n", cipher.result);
+    printf("The Decrypted Text:\n%s", cipher.result);
     printf("-------------------------------\n");
     output(cipher.result);
 }
