@@ -53,7 +53,9 @@ int main(){
     }
     while (choice != 3);
     
-    printf("Program exited sucessfully");
+    printf("Program exited sucessfully\n");
+    while (getchar() != '\n');
+    getchar();  // Wait for user input before closing the program;
 
     return 0;
 }
@@ -291,4 +293,4 @@ void output(char *a){
     printf("\nThe output has been written to the file \"output.txt\".");
 
     fclose(fptr);
-}
+} 
